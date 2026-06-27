@@ -5,118 +5,106 @@
 **Projeto 100% Open Source criado por Antony Cleiton, 12 anos**  
 **ACML DEV 2026 | Natal, RN - Brasil**
 
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-[![Status: Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow.svg)]()
-[![Hardware: Dez/2026](https://img.shields.io/badge/Hardware-Dez%2F2026-blue.svg)]()
+[[Licença: CC BY-NC-SA 4.0](https://img.shields.io/badge/Licença-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[[Status: Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow.svg)]()
+[[Hardware: Dez/2026](https://img.shields.io/badge/Hardware-Dez%2F2026-blue.svg)]()
 
 </div>
 
 ---
 
+## ⚠️ AVISO DE DOCUMENTAÇÃO - LEIA PRIMEIRO
+
+**ESTA DOCUMENTAÇÃO PODE CONTER ERROS. VERIFIQUE TUDO ANTES DE MONTAR.**  
+**ACML DEV 2026 NÃO se responsabiliza por docs erradas, incêndios ou ferimentos.**  
+**Feito por garoto de 12 anos. Espere erros. Monte por sua conta e risco.**
+
+---
+
 ## 🚀 O que é o TOBY MK1?
 
-O **TOBY MK1** é um dispositivo portátil 100% offline que roda o sistema **TOBYOS V.1 PRO** no ESP32. 
+**TOBY MK1** é um dispositivo portátil 100% offline que roda **TOBYOS V.1 PRO** no ESP32.
 
 **Filosofia:** Sem internet, sem rastreamento, sem espião, sem nuvem. Só você e o hardware.
 
-**Status atual:** Planejamento e documentação. Montagem do hardware prevista para **Dezembro/2026**.
+**Conceito Principal:** Interface touch. Botão power só pra LIGAR/DESLIGAR.
 
-## 🎯 Objetivo do Projeto
+**Status atual:** Só planejamento. Montagem prevista para **Dezembro/2026**.
 
-Criar um dispositivo pessoal que serve como:
-1. **Ferramenta de sobrevivência** com GPS offline, rádio FM e bússola
-2. **Plataforma de aprendizado** para eletrônica e programação embarcada
-3. **Prova de conceito** que um garoto de 12 anos pode criar tecnologia de ponta
+## 🎯 Objetivo Real
 
-## ⚙️ Hardware Planejado - BOM Completa
+1. **Comunicação tática:** Enviar/receber texto via rádio 433MHz com teclado touch
+2. **Navegação GPS:** Mostrar coordenadas com menu touch
+3. **Log de dados:** Salvar logs GPS/rádio no cartão SD
+4. **Privacidade primeiro:** Zero dependência de nuvem
 
-| Categoria | Componente | Modelo | Função no TOBYOS |
+## ⚙️ Hardware - BOM Final Real
+
+| Componente | Modelo | Função | Detalhes |
 | --- | --- | --- | --- |
-| **Processador** | ESP32-WROOM-32 | 240MHz Dual Core | Cérebro principal do sistema |
-| **Tela** | OLED SSD1306 | 128x64 I2C | Interface gráfica |
-| **Entrada** | Teclado Mecânico 3D | Custom 4x4 Matrix | Digitação e navegação |
-| **Tempo Real** | RTC DS3231 | I2C com bateria | Relógio e calendário offline |
-| **Localização** | GPS NEO-6M | UART | GPS offline sem internet |
-| **Rádio** | TEA5767 | FM I2C | Rádio FM 76-108MHz |
-| **Sensores** | MPU6050 | Acel + Giroscópio | Bússola e movimento |
-| **Armazenamento** | Cartão SD | SPI até 32GB | Mapas, músicas, notas |
-| **Energia** | Bateria 18650 | 3.7V 3000mAh | Autonomia portátil |
-| **Carregamento** | TP4056 | USB-C | Carregador seguro |
+| **MCU** | ESP32-WROOM-32 | Processador principal | WiFi/BT desligados |
+| **Tela** | 2.8" TFT Touch ST7789 | Interface touch colorida | 240x320, SPI |
+| **Touch** | Resistivo | Entrada do usuário | Caneta inclusa |
+| **Armazenamento** | Slot MicroSD | Cartão SD | Embutido no módulo da tela |
+| **GPS** | NEO-6M | Coordenadas offline | UART |
+| **Rádio** | CC1101 433MHz | Transmissor de dados | SPI, não é FM música |
+| **Energia** | Bateria 18650 | Alimentação | 3.7V 3000mAh |
+| **Botão** | 1x Botão Power | LIGA/DESLIGA APENAS | Não usado pra navegar |
 
-**Custo estimado:** R$ 180 - R$ 250
+**NÃO INCLUI:** Módulo RTC, rádio FM, calculadora, teclado físico, múltiplos botões.
 
-## 📱 Apps do TOBYOS V.1 PRO
+**Custo estimado:** R$ 250 - R$ 320 com TFT touch + SD.
 
-| App | Status | Descrição |
-| --- | --- | --- |
-| **🕐 Relógio** | Planejado | Horário com RTC DS3231 + alarme |
-| **🗺️ GPS Offline** | Planejado | Mapas OpenStreetMap no SD |
-| **📻 Rádio FM** | Planejado | TEA5767 com memória de estações |
-| **🧮 Calculadora** | Planejado | Operações básicas + científicas |
-| **📝 Notas** | Planejado | Editor de texto salvo no SD |
-| **🧭 Bússola** | Planejado | MPU6050 com calibração |
-| **⚙️ Config** | Planejado | Brilho, som, info do sistema |
-| **🔋 Bateria** | Planejado | Monitor de voltagem 18650 |
+## 📱 TOBYOS V.1 PRO - Interface Touch
 
-## 🗺️ Roadmap - Dez/2026
+**LIGAR:** Inicia → Menu touch aparece → Toca pra selecionar apps  
+**DESLIGAR:** Segura botão power → Desliga
 
-**Fase 1: Out-Nov/2026** - Compra dos componentes  
-**Fase 2: Dez/2026** - Montagem do hardware e soldas  
-**Fase 3: Jan/2027** - Código do TOBYOS V.1 PRO  
-**Fase 4: Fev/2027** - Testes e vídeos de demonstração  
+| App | Status | Descrição | Controle Touch |
+| --- | --- | --- | --- |
+| **🗺️ GPS** | Planejado | Mostra Lat/Lon/Alt/Velocidade | Toca ATUALIZAR, toca SALVAR pra log no SD |
+| **📡 Rádio 433MHz** | Planejado | Teclado touch pra digitar msg | Toca ENVIAR, toca msg recebida pra ver |
+| **🔋 Bateria** | Planejado | Voltagem + porcentagem | Sempre visível no canto |
+| **💾 Gerenciador** | Planejado | Ver/apagar logs do SD | Toca arquivos pra abrir |
+| **⌨️ Teclado** | Planejado | QWERTY na tela | Toca letras pra digitar |
 
-## ⚖️ Licença - LEIA ISSO
+**Método de Entrada:** Touchscreen completo. Botão power é SÓ pra ligar/desligar.  
+**Sem teclado físico. Toda navegação via toque.**
 
-Este projeto usa **Creative Commons BY-NC-SA 4.0**.
+## 🗺️ Roadmap
 
-### ✅ Você PODE:
-- Montar seu próprio TOBY MK1 pra uso pessoal
-- Estudar o código e esquemas
-- Modificar e melhorar o projeto
-- Compartilhar suas melhorias com a comunidade
+**Out-Nov/2026** - Comprar componentes  
+**Dez/2026** - Montar + calibrar touch  
+**Jan/2027** - Codar UI touch do TOBYOS  
+**Fev/2027** - Testes de campo  
 
-### ❌ Você NÃO PODE:
-- **Vender o TOBY MK1** ou qualquer derivado
-- Usar em produto comercial
-- Remover os créditos do Antony Cleiton
-- Fechar o código das suas modificações
+## ⚖️ Licença
 
-**Resumo:** Use, aprenda, melhore, compartilhe. Só não lucre em cima.
+**Creative Commons BY-NC-SA 4.0**  
+**✅ Use/modifique/compartilhe** pra uso pessoal  
+**❌ Venda/comercial/remova créditos/me processe**  
 
-## ⚠️ Aviso Legal Importante
+## ⚠️ AVISOS CRÍTICOS
 
-**Este projeto foi criado por um menor de idade de 12 anos para fins educacionais.**
+1. **CALIBRAÇÃO TOUCH:** Touch resistivo precisa calibrar. Pode ser impreciso.
+2. **CARTÃO SD:** Use FAT32. Máx 32GB. Cartão ruim corrompe dados.
+3. **RISCO DE INCÊNDIO:** 18650 pode explodir. Use célula protegida.
+4. **LEIS DE RÁDIO:** Transmitir 433MHz pode precisar licença. Veja leis locais. Uso ilegal = CRIME SEU.
+5. **PRECISÃO GPS:** Erro de ±10m. Não confie pra aviação.
+6. **TENHO 12 ANOS:** Docs podem estar erradas. Verifique pinagem antes de ligar.
 
-**ACML DEV 2026 e Antony Cleiton NÃO se responsabilizam por:**
-- Danos causados por montagem incorreta
-- Curto-circuito, explosão de bateria ou incêndio
-- Lesões durante soldagem ou uso
-- Perda de dados ou mau funcionamento
-- Uso indevido do dispositivo
-
-**Ao montar ou usar este projeto, você concorda que faz por sua conta e risco.**  
-**Não processe um garoto de 12 anos.**
-
-## 🤝 Como Contribuir
-
-1. **Dê uma estrela ⭐** no repo se curtiu
-2. **Abra uma Issue** pra sugerir melhorias
-3. **Faça um Fork** e mande Pull Request
-4. **Compartilhe** com quem curte eletrônica
+**Este aparelho TEM entrada touch. VOCÊ PODE digitar e enviar mensagens via 433MHz.**
 
 ## 📞 Contato
 
 **GitHub:** [@acmldev155](https://github.com/acmldev155)  
-**Projeto:** ACML DEV 2026  
-**Local:** Natal, RN - Brasil
+**Projeto:** ACML DEV 2026 | Natal, RN - Brasil
 
 ---
 
 <div align="center">
 
-**Hardware build scheduled for Dec/2026**  
-*Documentação será atualizada conforme o projeto evolui*
-
-**TOBY MK1 - Tecnologia brasileira, código aberto, futuro offline.**
+**Hardware: Dez/2026 - TFT Touch + SD**  
+**Documentação: Junho 2026 - Verifique antes de montar**
 
 </div>
