@@ -1,0 +1,226 @@
+# TOBY-MK1 - TOBYOS V.1 PRO Tactical Device 🌍
+
+**100% Open Source | TOBYOS V.1 PRO | ESP32**
+**Created by Antony Cleiton, 12 years old**
+**ACML DEV 2026 | Natal, RN - Brazil**
+
+## ⚠️ DOCUMENTATION DISCLAIMER
+
+THIS DOCUMENTATION MAY CONTAIN ERRORS. I AM 12 YEARS OLD.
+VERIFY ALL SCHEMATICS, CODE, AND PINOUTS BEFORE BUILDING.
+ACML DEV 2026 IS NOT RESPONSIBLE FOR FIRES, INJURIES, OR BROKEN DREAMS.
+BUILD AT YOUR OWN RISK.
+
+## 🚀 What is TOBY MK1?
+
+TOBY MK1 runs TOBYOS V.1 PRO - an offline tactical operating system on ESP32.
+
+Philosophy: Pocket computer. No internet. No cloud. No tracking. Just hardware.
+
+Hardware Status: Planning phase. Physical assembly scheduled for December/2026.
+
+## ⚙️ Hardware - Real BOM
+
+COMPONENT - MODEL - FUNCTION IN TOBYOS:
+- MCU: ESP32-WROOM-32 - Runs TOBYOS + WiFi + BT + SPI
+- Display: 2.8" TFT Touch ST7789 - 240x320 Touch UI + Virtual Keyboard
+- Storage: MicroSD Slot - Built into TFT module. TOBYOS file system
+- GPS: NEO-6M - GPS App - Coordinates + GPX logging
+- Radio: CC1101 433MHz - RF Scanner App - Detects 433MHz signals
+- IR: IR LED + Receiver - IR App - Clone/control TV, AC remotes
+- Power: 18650 3.7V - Main battery
+- Button: 1x Power - ON/OFF ONLY. Does NOT control apps
+
+NOT INCLUDED: RTC, FM radio, calculator, physical keypad.
+Estimated Cost: $50 - $65 USD
+
+## 📱 TOBYOS V.1 PRO - 8 Independent Apps
+
+All apps work standalone via touchscreen. No app requires another.
+
+APP LIST:
+1. Settings - Adjust brightness, sound, touch calibration, WiFi AP password
+2. Wi-Fi - Scan 2.4GHz networks, AP mode, packet info
+3. Bluetooth - BLE scanner, detect beacons, RSSI
+4. IR Remote - Record/send IR codes. Control TV, AC
+5. RF Scanner - CC1101 433MHz. Detect remotes, sensors. NOT a messenger
+6. GPS Tracker - Lat/Lon/Alt/Speed. Save GPX logs to SD
+7. SCFTOS - SiteControlForTobyOS - Optional remote control via phone
+8. Bootloader - Update TOBYOS firmware via SD card or WiFi OTA
+
+SCFTOS is OPTIONAL. Device works 100% without phone. SCFTOS just lets you control/download via browser.
+
+## 📖 USER MANUAL - How to Use TOBY MK1
+
+### **1. Power On/Off**
+- TURN ON: Long press power button 2 seconds → TOBYOS boots
+- TURN OFF: Long press power button 3 seconds → Shutdown
+- Power button DOES NOTHING ELSE. All control is via touchscreen.
+
+### **2. Main Screen - App Menu**
+
+After power on, you see the main screen with 8 buttons arranged like this:
+Row 1: [Config] [Wi-Fi]
+Row 2: [Bluetooth] [IR]
+Row 3: [Radio] [GPS]
+Row 4: [SCFTOS] [Bootloader]
+
+At the top of the screen it shows: TOBYOS V.1 PRO + Time + Battery icon
+At the bottom it shows: Touch to open | SD: 3.1GB Free
+
+Tap any button to open the app.
+
+### **3. Using Settings App**
+
+1. Tap the [Config] button on main screen
+2. Settings screen opens showing:
+   - Brightness: Slider from 0% to 100%
+   - Sound: Button showing ON or OFF
+   - Touch: Button CALIBRATE
+   - WiFi AP Name: TOBY-MK1
+   - AP Password: toby12345 + Button CHANGE
+   - Language: EN-US
+   - Button at bottom
+3. Adjust what you want by tapping sliders or buttons
+4. Tap the button to apply changes
+5. Tap [< Back] to return to main menu
+
+### **4. Using GPS Tracker App**
+
+1. Tap the **[GPS]** button on main screen
+2. GPS screen opens showing "SEARCHING SATELLITES"
+3. Wait 30 seconds for satellite lock
+4. When locked, screen shows:
+   - Status: LOCKED
+   - LAT: -5.794478 S
+   - LON: -35.211001 W
+   - ALT: 52m
+   - SPD: 0 km/h
+   - SAT: 8
+   - Accuracy: ±6m
+   - Buttons: [UPDATE] [SAVE LOG]
+5. Tap **[SAVE LOG]** → Saves coordinates to /GPS/2026-06-27.gpx on SD card
+6. Tap **[< Back]** to return to main menu
+
+### **5. Using RF Scanner - CC1101**
+
+1. Tap the **[Radio]** button on main screen
+2. RF Scanner screen opens showing:
+   - Frequency: 433.920 MHz + Button [SET]
+   - Signal bar: Shows signal strength
+   - Text: Waiting for signal...
+   - Buttons: [LISTEN]
+3. When it detects a remote control signal, screen shows:
+   - Signal: -65 dBm
+   - LAST SIGNAL: 00:58:41 F0A1B2C3
+   - Type: Remote Control
+4. Tap **** → Saves data to /RF/scan.log on SD card
+5. THIS IS NOT A CHAT. It detects garage remotes, sensors, etc.
+6. Tap **[< Back]** to return to main menu
+
+### **6. Using Wi-Fi Scanner**
+
+1. Tap the **[Wi-Fi]** button on main screen
+2. WiFi list appears on screen:
+   - VIVOFIBRA -45dBm Channel 6 WPA2
+   - Claro_2.4G -68dBm Channel 11 WPA2
+   - Neighbor -82dBm Channel 1 OPEN
+3. Tap any network to see MAC and Vendor details
+4. Tap button **[AP MODE]** → Creates "TOBY-MK1" network for SCFTOS
+5. Tap button **[SAVE LIST]** to save networks to SD
+6. Tap **[< Back]** to return to main menu
+
+### **7. Using Bluetooth Scanner**
+
+1. Tap the **[Bluetooth]** button on main screen
+2. BLE device list appears:
+   - MiBand7 -59dBm Wearable
+   - Tile-AB12 -71dBm Tracker
+   - Unknown -85dBm Beacon
+3. Tap any device to see details
+4. Tap button **** to save to SD
+5. Tap **[< Back]** to return to main menu
+
+### **8. Using IR Remote**
+
+1. Tap the **[IR]** button on main screen
+2. IR screen opens showing:
+   - Mode: Buttons [SEND] [LEARN]
+   - Last code: ---
+   - Protocol: ---
+   - Saved profiles: TV_POWER | AR_SAMSUNG
+   - Buttons: [SEND] [DELETE]
+3. To copy TV remote: Point TV remote at TOBY → Tap **[LEARN]**
+4. Code appears on screen: 0x20DF10EF NEC
+5. Tap **** → Type name "TV_POWER" using virtual keyboard
+6. To use: Point TOBY at TV → Select "TV_POWER" → Tap **[SEND]** → TV turns on
+7. Tap **[< Back]** to return to main menu
+
+### **9. Using SCFTOS - Phone Control**
+
+1. Tap the **[SCFTOS]** button on TOBY
+2. SCFTOS screen on TOBY shows:
+   - Status: WAITING FOR PHONE
+   - WiFi AP: TOBY-MK1
+   - Password: toby12345
+   - IP: 192.168.4.1
+   - Instruction: 1. Connect to WiFi 2. Open in browser
+   - Button: [DISABLE AP]
+   - Clients: 0 | Uptime: 00:05:21
+3. Connect phone to WiFi TOBY-MK1
+4. Open browser on phone: 192.168.4.1
+5. Control TOBY from phone: Start GPS, download files, run terminal
+6. To close SCFTOS: Tap **[DISABLE AP]** on TOBY screen
+7. Tap **[< Back]** to return to main menu
+
+### **10. Updating Firmware - Bootloader**
+
+1. Download `tobyos.bin` to root of SD card on your computer
+2. Put SD card in TOBY
+3. Tap the **[Bootloader]** button on main screen
+4. Bootloader screen shows:
+   - Current Version: V.1 PRO
+   - Build: 2026.06.27
+   - Update via: [SD CARD] tobyos.bin | [WiFi OTA] 192.168.4.1/update
+   - WARNING:!! DO NOT POWER OFF DURING UPDATE!!
+   - Button: [CHECK UPDATE]
+5. Tap **[UPDATE VIA SD]**
+6. Wait 60 seconds. **DO NOT POWER OFF TOBY**
+7. Device reboots automatically with new TOBYOS
+8. Tap **[< Back]** to return to main menu
+
+### **11. Touch Calibration**
+
+If touch is wrong or inaccurate:
+
+1. Tap **[Config]** on main screen
+2. Tap button **[CALIBRATE TOUCH]**
+3. Calibration screen opens
+4. Tap the 4 crosses that appear in the corners, one at a time
+5. After tapping all 4 crosses, tap ****
+6. TOBY reboots with calibrated touch
+
+## ⚖️ License
+
+Creative Commons BY-NC-SA 4.0
+✅ Personal use/modify/share
+❌ Commercial/sell/remove credits/sue a 12yo
+
+## ⚠️ SAFETY WARNINGS
+
+1. 18650 FIRE: Can explode. Use protected cell. Don't short.
+2. RF LAWS: Transmitting 433MHz may need license. Receiving is usually OK. Check local laws.
+3. GPS ACCURACY: ±10m error. Don't use for aviation.
+4. SD CARD: Use FAT32, max 32GB. Remove safely.
+5. TOUCH SCREEN: Resistive. Don't press hard with sharp objects.
+6. I'M 12: Pinouts might be wrong. Verify before soldering.
+
+## 📞 Contact
+
+GitHub: @acmldev155
+Project: ACML DEV 2026 | Natal, RN - Brazil
+
+---
+
+Hardware: Dec/2026 | TOBYOS V.1 PRO | 8 Apps
+Documentation: June 2026 - Verify everything
