@@ -1,0 +1,20 @@
+# Arduino e ESP32 - TOBY MK1
+*.bin
+*.elf
+*.hex
+*.map
+build/
+.pio/
+.vscode/
+
+# Lixo do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos pessoais com senha
+secrets.h
+wifi_senha.txt
+
+# Firmware compilado
+TOBYOS_V1_PRO.bin
